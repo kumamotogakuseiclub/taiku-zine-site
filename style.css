@@ -1138,3 +1138,36 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
 @media(min-width:720px){.b26grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.b26grid{grid-template-columns:repeat(3,1fr)}}
 .nsfjp{display:inline-block;margin:-2px 0 12px;padding:1px 12px;border:2px solid var(--ink);border-radius:99px;font-family:var(--jp);font-weight:700;font-size:.78rem;letter-spacing:.04em;background:var(--white)}
+
+/* ===== スマホの表紙：見切れ対策（幅を実測して逆算） ===== */
+/* 原因：「Kumamoto」の幅が約5.2emで、画面より広く、表紙全体の幅を押し広げていた */
+.cover .in>*{min-width:0}
+.cover h1,.cover .tc,.cover p.sub,.cover .event,.cover .top{max-width:100%}
+@media(max-width:819px){
+  .cover{padding:28px 16px 52px}
+  .cover .top{gap:6px;letter-spacing:.04em;font-size:.75rem;flex-wrap:wrap}
+  .cover h1{font-size:13.5vw;letter-spacing:-.03em}
+  .cover h1 .x{font-size:.34em;margin:.25em 0 .1em .1em;letter-spacing:.06em}
+  .cover h1 .k{margin-left:.12em}
+  .cover .tc{font-size:clamp(1.15rem,5.2vw,1.6rem);max-width:100%}
+  .cover p.sub{overflow-wrap:anywhere}
+  .cover .event{max-width:100%;flex-wrap:wrap;padding:8px 12px}
+  .cover .event .lg-tk{height:30px}
+  .cover .event .ev-d{font-size:.95rem}
+  .arch{width:min(70%,300px)}
+  .arch .vert{right:-4px;font-size:1.05rem;letter-spacing:.18em;padding:8px 3px}
+  .arch .sticker{left:-18px;width:96px;height:96px;font-size:.72rem}
+}
+@media(max-width:380px){
+  .cover h1{font-size:13vw}
+  .cover .event .ev-d{font-size:.88rem}
+}
+
+/* スマホの表紙：「Kumamoto」を確実に収める（幅いっぱいに収まる大きさ＋はみ出し防止） */
+@media(max-width:819px){
+  .cover h1{font-size:min(13vw,86px);width:100%;overflow-wrap:normal;white-space:nowrap}
+  .cover h1 .k{margin-left:0;padding-left:.06em}
+  .cover h1 .x{white-space:nowrap}
+}
+@media(max-width:380px){.cover h1{font-size:12.4vw}}
+@media(max-width:340px){.cover h1{font-size:11.6vw}}
