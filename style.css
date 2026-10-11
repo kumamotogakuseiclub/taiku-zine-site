@@ -1173,3 +1173,95 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
 @media(max-width:340px){.cover h1{font-size:11.6vw}}
 
 .nsfofficial{margin:4px 0 14px}
+
+/* =====================================================================
+   走るスクーター
+   A. 全ページ：スクーターは、画面の左下に固定。下へスクロールすると、道の破線と街灯が、
+      右から左へ流れ、走っているように見える。道の色は、ページの進みに合わせて、
+      赤（台湾）→緑（熊本）へ変わる。車体の弾みと煙は、スクロールしている間だけ出る。
+   B. 特別な場面：「二つの街、ここが似てる？」と「若者の1日」で、台湾→熊本へ、走り抜ける。
+      このとき、画面の隅のスクーターは、いったん消える。
+   ===================================================================== */
+html{timeline-scope:--sc1}
+.rider{position:fixed;left:0;right:0;bottom:0;height:0;z-index:60;pointer-events:none;--rw:88px;--rd:16px;--flowD:6000px;--flowP:3600px}
+@media(min-width:820px){.rider{--rw:128px;--rd:18px}}
+body{padding-bottom:calc(var(--rd,16px) + 10px)}
+/* 道 */
+.rd{position:absolute;left:0;right:0;bottom:0;height:var(--rd);background:var(--ink)}
+.rd-tint{position:absolute;left:0;right:0;top:3px;bottom:0;background:var(--red)}
+.rd-dash{position:absolute;left:0;right:0;top:calc(var(--rd) / 2 + 1px);height:3px;background:repeating-linear-gradient(90deg,var(--white) 0 20px,transparent 20px 40px);background-size:40px 3px}
+/* 街灯（道より、ゆっくり流れる＝奥行き） */
+.rd-poles{position:absolute;left:0;right:0;bottom:var(--rd);height:36px;background-image:linear-gradient(90deg,rgba(20,20,20,.55) 2px,transparent 2px),radial-gradient(circle at 1px 5px,var(--yellow) 0 4.5px,transparent 5px);background-size:200px 36px;background-repeat:repeat-x;opacity:.9}
+/* スクーター（左下に固定。右向き） */
+.rider-run{position:absolute;left:14px;bottom:calc(var(--rd) - 3px);width:var(--rw);display:block}
+.rider-bob{display:block;position:relative}
+.rider-img{display:block;width:var(--rw);height:auto;transform:scaleX(-1)}
+.puffs{position:absolute;left:0;bottom:6%;width:0;height:0}
+.puff{position:absolute;left:0;bottom:0;width:calc(var(--rw)*.34);height:auto;opacity:0;transform-origin:50% 60%}
+
+@keyframes roadFlow{from{background-position-x:0}to{background-position-x:calc(var(--flowD) * -1)}}
+@keyframes poleFlow{from{background-position-x:0}to{background-position-x:calc(var(--flowP) * -1)}}
+@keyframes roadTint{0%{background:#d12a1a}50%{background:#d6a62a}100%{background:#4fb83d}}
+@keyframes rideBob{0%,100%{translate:0 0;rotate:0deg}25%{translate:0 -3px;rotate:-1.2deg}75%{translate:0 -1px;rotate:.8deg}}
+@keyframes puffOut{0%{opacity:0;translate:0 0;scale:.35}12%{opacity:.95}100%{opacity:0;translate:calc(var(--rw)*-.62) calc(var(--rw)*-.1);scale:1.25}}
+@keyframes riderHide{0%{opacity:1}14%{opacity:0}86%{opacity:0}100%{opacity:1}}
+
+@media(prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: scroll()) {
+    .rd-dash{animation:roadFlow linear both;animation-timeline:scroll(root block)}
+    .rd-poles{animation:poleFlow linear both;animation-timeline:scroll(root block)}
+    .rd-tint{animation:roadTint linear both;animation-timeline:scroll(root block)}
+    .rider-bob{animation:rideBob linear both;animation-timeline:scroll(root block);animation-iteration-count:70}
+    .puff{animation:puffOut ease-out both;animation-timeline:scroll(root block)}
+    .puff.p1{animation-iteration-count:70}.puff.p2{animation-iteration-count:53}.puff.p3{animation-iteration-count:41}
+  }
+  /* スクロール連動に未対応のブラウザ：ゆっくり走り続ける */
+  @supports not (animation-timeline: scroll()) {
+    .rd-dash{animation:roadFlow 14s linear infinite;--flowD:600px}
+    .rd-poles{animation:poleFlow 14s linear infinite;--flowP:400px}
+    .rd-tint{animation:roadTint 40s linear infinite alternate}
+    .rider-bob{animation:rideBob .7s ease-in-out infinite}
+    .puff{animation:puffOut 1.6s ease-out infinite}
+    .puff.p2{animation-delay:.53s}.puff.p3{animation-delay:1.06s}
+  }
+}
+@media(prefers-reduced-motion:reduce){.puffs{display:none}.rd-tint{background:linear-gradient(90deg,#d12a1a,#4fb83d)}}
+@media print{.rider,.scene{display:none}}
+
+/* ---------- B. 特別な場面：台湾 → 熊本へ走り抜ける ---------- */
+.scene{position:relative;height:calc(var(--sw,92px) + 22px);margin:30px 0 6px;--sw:92px;view-timeline:--sc1 block;overflow:hidden}
+@media(min-width:820px){.scene{--sw:128px}}
+.scene-road{position:absolute;left:0;right:0;bottom:0;height:16px;background:linear-gradient(90deg,#d12a1a 0%,#d6a62a 50%,#4fb83d 100%);border-top:3px solid var(--ink);box-shadow:0 3px 0 var(--ink)}
+.scene-run{position:absolute;left:0;bottom:12px;width:var(--sw);display:block}
+.scene-bob{display:block;position:relative}
+.scene .rider-img{width:var(--sw)}
+.scene .puff{width:calc(var(--sw)*.34)}
+.scene-end{position:absolute;bottom:20px;font-family:var(--jp);font-weight:900;font-size:1.5rem;line-height:1.1;z-index:1}
+.scene-end small{display:block;font-family:var(--en);font-style:italic;font-size:.6em;color:var(--redtext)}
+.scene-end.l{left:2px}
+.scene-end.r{right:2px;text-align:right}
+.scene-end.r small{color:#2f7d4a}
+.vs .scene .scene-road{border-top-color:var(--white);box-shadow:0 3px 0 var(--white)}
+@keyframes sceneRide{from{left:0}to{left:calc(100% - var(--sw))}}
+@keyframes sceneBob{0%,100%{translate:0 0;rotate:0deg}25%{translate:0 -3px;rotate:-1.2deg}75%{translate:0 -1px;rotate:.8deg}}
+@media(prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: scroll()) {
+    .scene-run{animation:sceneRide linear both;animation-timeline:--sc1;animation-range:cover 12% cover 72%}
+    .scene-bob{animation:sceneBob linear both;animation-timeline:--sc1;animation-range:cover 12% cover 72%;animation-iteration-count:14}
+    .scene .puff{animation:puffOut ease-out both;animation-timeline:--sc1;animation-range:cover 12% cover 72%}
+    .scene .puff.p1{animation-iteration-count:16}.scene .puff.p2{animation-iteration-count:11}.scene .puff.p3{animation-iteration-count:8}
+    /* この場面が画面に出ている間は、隅のスクーターを消す（2台を重ねない） */
+    .rider{animation:riderHide linear both;animation-timeline:--sc1;animation-range:cover 0% cover 100%}
+  }
+  @supports not (animation-timeline: scroll()) {
+    .scene-run{animation:sceneRide 7s linear infinite}
+    .scene-bob{animation:sceneBob .7s ease-in-out infinite}
+    .scene .puff{animation:puffOut 1.6s ease-out infinite}
+    .scene .puff.p2{animation-delay:.53s}.scene .puff.p3{animation-delay:1.06s}
+  }
+}
+@media(prefers-reduced-motion:reduce){.scene .puffs{display:none}}
+
+/* 場面の「台灣／熊本」の文字は、スクーターの走る高さの上に置く（かぶらないように） */
+.scene.scene-route{height:calc(var(--sw,92px) + 56px)}
+.scene-route .scene-end{bottom:calc(var(--sw,92px) + 8px)}
