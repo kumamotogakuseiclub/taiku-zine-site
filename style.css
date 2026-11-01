@@ -1317,3 +1317,10 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
   .bar nav{flex:1 1 100%}
   .bar .groups{justify-content:flex-start}
 }
+/* zine表紙（熊本編・台湾編） */
+.zcovers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 16px}
+.zcovers figure{margin:0}
+.zcovers img{display:block;width:100%;height:auto;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:var(--ink)}
+.zcovers figcaption{margin-top:8px;text-align:center;font-family:var(--jp);font-weight:900;line-height:1.3}
+.zcovers figcaption b{display:block;font-size:1.05rem}
+.zcovers figcaption small{display:block;font-family:var(--sans);font-weight:700;font-size:.75rem;color:#555}
