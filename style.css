@@ -828,7 +828,7 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
 .gs{font-weight:700;font-size:.9rem;line-height:1.7;margin-top:6px}
 .gbox .mapbtn{margin-top:12px;background:var(--ink);color:var(--white);box-shadow:5px 5px 0 var(--ink)}
 .getlink{margin-top:24px}
-@media(min-width:820px){.getgrid{grid-template-columns:1.25fr 1fr 1fr;align-items:stretch}}
+@media(min-width:820px){.getgrid{grid-template-columns:1.25fr 1fr;align-items:stretch}}
 
 /* =====================================================================
    ボタンの整え・動きの整理・スキップリンク
@@ -1328,3 +1328,4 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
 .bar .g-x .gl{background:var(--yellow)}
 .bar .g-x li a{border-color:var(--yellow)}
 .crumbs .cr-x{background:var(--yellow)}
+.gv small{font-size:.6em;margin-left:.2em}
