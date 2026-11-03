@@ -1324,3 +1324,7 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
 .zcovers figcaption{margin-top:8px;text-align:center;font-family:var(--jp);font-weight:900;line-height:1.3}
 .zcovers figcaption b{display:block;font-size:1.05rem}
 .zcovers figcaption small{display:block;font-family:var(--sans);font-weight:700;font-size:.75rem;color:#555}
+/* ナビ：コラボ（4つ目のグループ） */
+.bar .g-x .gl{background:var(--yellow)}
+.bar .g-x li a{border-color:var(--yellow)}
+.crumbs .cr-x{background:var(--yellow)}
