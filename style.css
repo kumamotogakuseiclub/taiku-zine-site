@@ -1364,3 +1364,7 @@ h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
 .clublogo{width:128px;height:128px;flex:none;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transform:rotate(-2deg);object-fit:cover}
 .clubrow p{font-weight:700;line-height:1.95;max-width:34em;line-break:strict}
 @media(max-width:560px){.clubrow{flex-direction:column;align-items:flex-start;gap:18px}.clublogo{width:112px;height:112px}.clubrow p{font-size:.9rem}}
+
+/* 見出しの強調（下線・色ベタ）の途中で改行しない：改行するなら、強調の前後で */
+h1 mark,h2 mark{white-space:nowrap}
+[class*="nsf"] h2 mark{white-space:normal}
