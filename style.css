@@ -1345,3 +1345,5 @@ h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
 .cover p.sub{white-space:nowrap;font-size:min(1rem,calc((100vw - 32px)/27))}
 .lead.l3{max-width:none;text-wrap:wrap}
 .lead.l1{max-width:none;white-space:nowrap;font-size:min(1.1rem,calc((100vw - 40px)/35))}
+.wide{max-width:none;text-wrap:wrap}
+.thanks p.wide{max-width:none}
