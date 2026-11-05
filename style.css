@@ -1347,3 +1347,14 @@ h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
 .lead.l1{max-width:none;white-space:nowrap;font-size:min(1.1rem,calc((100vw - 40px)/35))}
 .wide{max-width:none;text-wrap:wrap}
 .thanks p.wide{max-width:none}
+
+/* ボックス内の本文：両端揃え＋強い禁則 */
+.abox p,.member dd,.member p,.wbox p,.zinecard p,.gbox p,.summary p,.summary li,.person p,.person .view,.person .view p,blockquote,.thanks p.wide,.daywrap p,.rcol p{
+  text-align:justify;text-justify:inter-character;line-break:strict;word-break:auto-phrase;text-wrap:wrap;hyphens:none}
+/* 両端揃えの本文：かなの幅を詰めて（プロポーショナルメトリクス）、文字間の広がりを抑える */
+.abox p,.member dd,.member p,.wbox p,.zinecard p,.gbox p,.summary p,.summary li,.person p,.person .view,.person .view p,blockquote,.thanks p.wide,.daywrap p,.rcol p{
+  font-feature-settings:"palt" 1;letter-spacing:-.01em}
+/* スマホ：ボックス内の本文を少し小さくして1行の文字数を増やす（両端揃えの広がり対策） */
+@media(max-width:600px){
+  .abox p,.member dd,.member p,.wbox p,.zinecard p,.gbox p,.summary p,.summary li,.person p,.person .view,.person .view p,blockquote,.thanks p.wide,.daywrap p,.rcol p{font-size:.86rem}
+}
