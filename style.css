@@ -1358,3 +1358,9 @@ h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
 @media(max-width:600px){
   .abox p,.member dd,.member p,.wbox p,.zinecard p,.gbox p,.summary p,.summary li,.person p,.person .view,.person .view p,blockquote,.thanks p.wide,.daywrap p,.rcol p{font-size:.86rem}
 }
+
+/* 熊本学生倶楽部とは */
+.clubrow{display:flex;gap:22px;align-items:center;margin-top:14px}
+.clublogo{width:128px;height:128px;flex:none;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transform:rotate(-2deg);object-fit:cover}
+.clubrow p{font-weight:700;line-height:1.95;max-width:34em;line-break:strict}
+@media(max-width:560px){.clubrow{flex-direction:column;align-items:flex-start;gap:18px}.clublogo{width:112px;height:112px}.clubrow p{font-size:.9rem}}
