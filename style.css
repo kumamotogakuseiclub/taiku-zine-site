@@ -1368,3 +1368,8 @@ h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
 /* 見出しの強調（下線・色ベタ）の途中で改行しない：改行するなら、強調の前後で */
 h1 mark,h2 mark{white-space:nowrap}
 [class*="nsf"] h2 mark{white-space:normal}
+
+/* NEO SOUTH WAVE キービジュアル */
+.wavekv{margin:26px auto 30px;max-width:340px;rotate:-1.4deg}
+.wavekv .frame{padding:6px;box-shadow:6px 6px 0 var(--ink)}
+.wavekv .frame img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
