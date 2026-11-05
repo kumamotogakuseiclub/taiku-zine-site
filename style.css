@@ -1329,3 +1329,19 @@ a.btn,.insta,.mapbtn,.zclose,.back-hint,.lb-x{min-height:44px;display:inline-fle
 .bar .g-x li a{border-color:var(--yellow)}
 .crumbs .cr-x{background:var(--yellow)}
 .gv small{font-size:.6em;margin-left:.2em}
+/* 改行の整え：句読点の直前3文字は離さない／文節で折り返す／1文字だけの行を作らない */
+.nw{white-space:nowrap}
+body{word-break:auto-phrase;line-break:strict;overflow-wrap:break-word}
+p,li,dd,blockquote,figcaption{text-wrap:pretty}
+h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
+
+/* 手動の改行（はじめにのページ） */
+.ln{display:block;white-space:nowrap}
+.cover h1 .k{white-space:nowrap}
+@media(min-width:820px){.cover h1{font-size:min(120px,9vw)}}
+#intro .lead{max-width:none;text-wrap:wrap}
+.cover p.sub{max-width:none}
+.cover p.sub .ln{display:inline;white-space:nowrap}
+.cover p.sub{white-space:nowrap;font-size:min(1rem,calc((100vw - 32px)/27))}
+.lead.l3{max-width:none;text-wrap:wrap}
+.lead.l1{max-width:none;white-space:nowrap;font-size:min(1.1rem,calc((100vw - 40px)/35))}

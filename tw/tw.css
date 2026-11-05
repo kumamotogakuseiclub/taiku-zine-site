@@ -60,3 +60,8 @@ footer{background:var(--ink);color:#fff;text-align:center;padding:18px;font-size
 .cards li.soon i{color:#6b6155}
 .tr li>div p+p{margin-top:.8em}
 .tr li.tbd p{color:#5b5348;font:500 13px/1.8 "Zen Kaku Gothic New"}
+/* 改行の整え：句読点の直前3文字は離さない／文節で折り返す／1文字だけの行を作らない */
+.nw{white-space:nowrap}
+body{word-break:auto-phrase;line-break:strict;overflow-wrap:break-word}
+p,li,dd,blockquote,figcaption{text-wrap:pretty}
+h1,h2,h3,h4,.lead,.sub,.tc{text-wrap:balance}
